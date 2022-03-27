@@ -1,10 +1,9 @@
 const renderFurigana = require("./renderFurigana");
-const express = require("express");
-
 const kanjiFont = "40px Noto Sans JP";
 const furiganaFont = "20px Noto Sans JP";
 
-const app = express();
+const app = require("express")();
+app.use(require("cors")());
 
 app.get("/:text", function(req, res) {
   renderFurigana(req.params.text, kanjiFont, furiganaFont).then(pngBuffer => {
